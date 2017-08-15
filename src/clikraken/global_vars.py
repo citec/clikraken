@@ -24,6 +24,10 @@ USER_SETTINGS_PATH = os.path.normpath(USER_SETTINGS_PATH)
 
 # Default settings
 DEFAULT_SETTINGS_INI = """[clikraken]
+# default exchange to work in when no option '-e' or '--exchange' is given
+# and the environment variable CLIKRAKEN_DEFAULT_EXCHANGE is not set
+exchange = kraken
+
 # default currency pair when no option '-p' or '--pair' is given
 # and the environment variable CLIKRAKEN_DEFAULT_PAIR is not set
 currency_pair = XETHZEUR
@@ -44,6 +48,8 @@ trading_agreement = not_agree
 # Global variables to be shared between clikraken's modules
 KRAKEN_API = None
 DEFAULT_PAIR = None
+DEFAULT_EXCHANGE = None
+EXCHANGE = None
 TICKER_PAIRS = None
 TZ = None
 TRADING_AGREEMENT = None

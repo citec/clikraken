@@ -38,6 +38,10 @@ def load_config():
 
     conf = config['clikraken']
 
+    # Get the default exchange from environment variable if available
+    # otherwise take the value from the config file.
+    gv.DEFAULT_EXCHANGE = os.getenv('CLIKRAKEN_DEFAULT_EXCHANGE', conf.get('exchange'))
+
     # Get the default currency pair from environment variable if available
     # otherwise take the value from the config file.
     gv.DEFAULT_PAIR = os.getenv('CLIKRAKEN_DEFAULT_PAIR', conf.get('currency_pair'))

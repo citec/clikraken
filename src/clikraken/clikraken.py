@@ -4,7 +4,7 @@
 """
 clikraken
 
-Command line client for the Kraken exchange
+Command line client for the some cryptocurrencies exchanges
 
 Licensed under the Apache License, Version 2.0. See the LICENSE file.
 """

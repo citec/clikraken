@@ -70,7 +70,7 @@ Alternatively, you can set a path in the environment variable `CLIKRAKEN_API_KEY
 
 clikraken looks for settings in `~/.config/clikraken/settings.ini` per default. 
 
-If the settings file doesn't exist yet, default settings are assumed. You can see the default settings by calling `clikraken generate_settings`. Currently these settings are mostly useful for defining the default currency pair to use if the option `--pair` (or `-p`) is not provided. *The current built-in default pair is XETHZEUR* (Ethereum/Euro). You may want to change that if you are mostly trading with another currency pair. Alternatively, you can set the environment variable `CLIKRAKEN_DEFAULT_PAIR` to override the default currency pair.
+If the settings file doesn't exist yet, default settings are assumed. You can see the default settings by calling `clikraken generate_settings`. Currently these settings are mostly useful for defining the default exchange to work in if the option `--exchange`(or `-e`) is not provided, and default currency pair to use if the option `--pair` (or `-p`) is not provided. *The current built-in default pair is XETHZEUR* (Ethereum/Euro). You may want to change that if you are mostly trading with another currency pair. Alternatively, you can set the environment variable `CLIKRAKEN_DEFAULT_PAIR` to override the default currency pair.
 
 You can generate your `settings.ini` by doing the following:
 
@@ -96,7 +96,7 @@ clikraken --help
 Output:
 
 ```
-usage: ck [-h] [-V] [--debug] [--raw] [--cron]
+usage: ck [-h] [-V] [--debug] [--raw] [--cron] [--exchange]
           {generate_settings,asset_pairs,ap,ticker,t,depth,d,last_trades,lt,balance,bal,place,p,cancel,x,olist,ol,clist,cl}
           ...
 
@@ -120,6 +120,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -V, --version         show program version
   --debug               debug mode
+  --exchange            exchange to work in
   --raw                 output raw json results from the API
   --cron                activate cron mode (tone down errors due to timeouts
                         or unavailable Kraken service)
@@ -128,13 +129,14 @@ To get help about a subcommand use: clikraken SUBCOMMAND --help
 For example:
     clikraken place --help
 
+Current default exchange: kraken.
 Current default currency pair: XETHZEUR.
 
-Create or edit the setting file C:\Users\Zertrin\.config\clikraken\settings.ini to change it.
+Create or edit the setting file C:\Users\Zertrin\.config\clikraken\settings.ini to change them.
 If the setting file doesn't exist yet, you can create one by doing:
     clikraken generate_settings > C:\Users\Zertrin\.config\clikraken\settings.ini
 
-You can also set the CLIKRAKEN_DEFAULT_PAIR environment variable
+You can also set the CLIKRAKEN_DEFAULT_EXCHANGE or CLIKRAKEN_DEFAULT_PAIR environment variable
 which has precedence over the settings from the settings file.
 ```
 
