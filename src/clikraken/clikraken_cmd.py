@@ -30,6 +30,7 @@ from clikraken.api.private.get_deposit_addresses import get_deposit_addresses
 from clikraken.api.private.list_closed_orders import list_closed_orders
 from clikraken.api.private.list_open_orders import list_open_orders
 from clikraken.api.private.get_ledgers import get_ledgers
+from clikraken.api.private.trades import trades
 from clikraken.api.private.place_order import place_order
 
 
@@ -270,6 +271,41 @@ def parse_args():
         default=None,
         help='comma delimited list of ledger ids to query info about (20 maximum)')
     parser_ledgers.set_defaults(sub_func=get_ledgers)
+
+    # Get trades info
+    parser_trades = subparsers.add_parser(
+        'trades',
+        aliases=['tr'],
+        help='[private] Get trades history',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser_trades.add_argument(
+        '-t',
+        '--type',
+        default=None,
+        help='type of trade (optional). Values: all|any position|closed position|closing position|no position')
+    # TODO: trades parameter
+    parser_trades.add_argument(
+        '-s',
+        '--start',
+        default=None,
+        help='starting uniz timestamp or trade tx id of results (optional. exclusive)')
+    parser_trades.add_argument(
+        '-e',
+        '--end',
+        default=None,
+        help='ending uniz timestamp or trade tx id of results (optional. exclusive)')
+    parser_trades.add_argument(
+        '-o',
+        '--ofs',
+        default=None,
+        help='result offset')
+    parser_trades.add_argument(
+        '-i',
+        '--id',
+        default=None,
+        help='comma delimited list of transaction ids to query info about (20 maximum)')
+    parser_trades.add_argument('-p', '--pair', default=None, help=pair_help)
+    parser_trades.set_defaults(sub_func=trades)
 
     args = parser.parse_args()
 
