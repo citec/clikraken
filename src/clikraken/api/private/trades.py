@@ -15,6 +15,7 @@ from clikraken.api.api_utils import query_api
 from clikraken.clikraken_utils import asset_pair_short
 from clikraken.clikraken_utils import format_timestamp
 from clikraken.clikraken_utils import _tabulate as tabulate
+from clikraken.clikraken_utils import csv
 
 
 def trades(args):
@@ -78,4 +79,7 @@ def trades(args):
     if not tl2:
         return
 
-    print(tabulate(tl2, headers="keys"))
+    if args.csv:
+        print(csv(tl2, headers="keys"))
+    else:
+        print(tabulate(tl2, headers="keys"))
