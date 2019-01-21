@@ -43,4 +43,4 @@ def get_balance(args=None):
     if args.csv:
         print(csv(bal_list, headers="keys"))
     else:
-        print(tabulate(bal_list, headers="keys"))
+        print(tabulate(bal_list, headers="keys", floatfmt=".8f"))
